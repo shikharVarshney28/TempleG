@@ -27,49 +27,49 @@ const Header = () => {
       scrolled ? 'bg-white shadow-md' : 'bg-white'
     }`}>
       
-      {/* TOP STRIP */}
-      <div className="bg-[#8b0000] text-white py-1.5 px-4 lg:px-12 flex justify-between items-center text-[10px] sm:text-[11px] font-bold">
-        <div className="flex items-center gap-3 sm:gap-6">
-          <a href="tel:+910000000000" className="flex items-center gap-1.5 whitespace-nowrap">
-            <Phone size={12} fill="white" />
-            <span>+91 000 000 0000</span>
+      {/* --- TOP STRIP --- */}
+      <div className="bg-[#8b0000] text-white py-2 px-4 lg:px-12 flex justify-between items-center text-[11px] font-bold tracking-wider">
+        <div className="flex items-center gap-4 lg:gap-8">
+          <a href="tel:+910000000000" className="flex items-center gap-2 hover:text-orange-300 transition-all">
+            <Phone size={14} className="fill-current" />
+            <span className="hidden sm:inline">+91 000 000 0000</span>
           </a>
           <span className="opacity-30">|</span>
-          <a href="mailto:ganpati.agra@divine.com" className="flex items-center gap-1.5 uppercase whitespace-nowrap">
-            <Mail size={12} fill="white" />
-            <span>ganpati.agra@divine.com</span>
+          <a href="mailto:ganpati.agra@divine.com" className="flex items-center gap-2 hover:text-orange-300 transition-all uppercase">
+            <Mail size={14} className="fill-current" />
+            <span className="hidden sm:inline">ganpati.agra@divine.com</span>
           </a>
         </div>
-        <div className="hidden md:flex items-center gap-2">
-          <Globe size={12} />
-          <span>AGRA, UP</span>
+        <div className="flex items-center gap-2">
+          <Globe size={14} />
+          <span className="uppercase">Agra, Uttar Pradesh</span>
         </div>
       </div>
 
-      {/* MAIN NAVBAR */}
-      <div className="max-w-[1440px] mx-auto flex items-center justify-between px-4 py-3 lg:py-5">
+      {/* --- MAIN NAVIGATION --- */}
+      <div className="max-w-[1500px] mx-auto flex items-center justify-between px-4 lg:px-8 py-3 lg:py-4">
         
-        {/* Branding */}
-        <Link to="/" className="flex items-center gap-3 shrink-0">
-          <div className="h-10 w-10 lg:h-14 lg:w-14 rounded-full border border-orange-500 overflow-hidden bg-white">
+        {/* Divine Branding */}
+        <Link to="/" className="flex items-center gap-2 lg:gap-3 shrink-0">
+          <div className="h-12 w-12 lg:h-16 lg:w-16 rounded-full border-2 border-orange-500 p-1 shadow-inner overflow-hidden flex items-center justify-center bg-white">
              <img src="/image.png" alt="Logo" className="w-full h-full object-contain" />
           </div>
           <div className="flex flex-col">
-            <h1 className="text-[14px] lg:text-xl font-black text-red-800 leading-none uppercase">
+            <h1 className="text-sm lg:text-xl xl:text-2xl font-black text-red-800 leading-[1] tracking-tight uppercase">
               Varadha Vallabha<br/>
               <span className="text-orange-600">MahaGanapati</span>
             </h1>
           </div>
         </Link>
 
-        {/* Desktop Navigation - Changed from xl:flex to lg:flex */}
-        <nav className="hidden lg:flex items-center gap-4 xl:gap-7">
+        {/* Desktop Links - CHANGED xl:flex TO lg:flex */}
+        <nav className="hidden lg:flex items-center gap-4 xl:gap-6 2xl:gap-8 mx-4">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               to={link.url}
-              className={`text-[11px] xl:text-[12px] font-black tracking-wider transition-all hover:text-red-700 ${
-                location.pathname === link.url ? 'text-red-700 border-b-2 border-red-700' : 'text-gray-600'
+              className={`text-[11px] xl:text-[12px] font-black tracking-tighter xl:tracking-normal transition-all hover:text-red-700 whitespace-nowrap ${
+                location.pathname === link.url ? 'text-red-700 underline underline-offset-4 decoration-2' : 'text-gray-600'
               }`}
             >
               {link.name}
@@ -77,58 +77,58 @@ const Header = () => {
           ))}
         </nav>
 
-        {/* Actions */}
-        <div className="flex items-center gap-2 sm:gap-4">
+        {/* Action Buttons */}
+        <div className="flex items-center gap-2 xl:gap-4">
+          {/* DONATE: Visible from Laptop (lg) size onwards */}
           <Link 
-            to="/ddarshan" 
-            className="flex items-center gap-1.5 bg-orange-500 text-white px-3 sm:px-5 py-2.5 rounded-full text-[9px] sm:text-[11px] font-black tracking-widest shadow-lg hover:bg-orange-600 transition-all"
+            to="/donation" 
+            className="hidden lg:flex items-center gap-2 bg-[#b20000] text-white px-4 xl:px-6 py-2.5 rounded-full text-[10px] font-black tracking-widest hover:bg-red-800 transition-all shadow-md shrink-0"
           >
-            <PlayCircle size={14} />
-            <span className="whitespace-nowrap uppercase">Daily Darshan</span>
+            <Heart size={14} className="fill-current" />
+            DONATE
           </Link>
 
-          {/* Mobile Menu Icon */}
-          <button 
-            onClick={() => setIsOpen(true)} 
-            className="lg:hidden p-2 text-red-800 hover:bg-red-50 rounded-lg"
+          {/* DAILY DARSHAN: Always visible */}
+          <Link 
+            to="/ddarshan" 
+            className="flex items-center gap-2 bg-gradient-to-r from-[#ff8c00] to-[#ff4500] text-white px-4 xl:px-6 py-2.5 rounded-full text-[10px] font-black tracking-widest shadow-md hover:brightness-110 transition-all shrink-0"
           >
-            <Menu size={28} />
+            <PlayCircle size={16} />
+            <span className="hidden sm:inline">DAILY DARSHAN</span>
+            <span className="sm:hidden">DARSHAN</span>
+          </Link>
+
+          {/* Menu Button: Only visible on screens smaller than lg */}
+          <button onClick={() => setIsOpen(!isOpen)} className="lg:hidden p-2 text-red-700 ml-1">
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
       </div>
 
-      {/* --- MOBILE SIDEBAR DRAWER --- */}
-      <div className={`fixed inset-0 bg-black/50 z-[200] transition-opacity duration-300 ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`} onClick={() => setIsOpen(false)}>
-        <div 
-          className={`absolute right-0 top-0 h-full w-[280px] bg-white shadow-2xl transition-transform duration-300 transform ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
-          onClick={(e) => e.stopPropagation()}
-        >
-          <div className="flex items-center justify-between p-6 border-b">
-            <span className="text-red-800 font-black uppercase tracking-widest">Menu</span>
-            <X size={28} className="text-gray-400 cursor-pointer" onClick={() => setIsOpen(false)} />
+      {/* --- MOBILE OVERLAY --- */}
+      {isOpen && (
+        <div className="lg:hidden fixed inset-0 bg-white z-[200] p-6 flex flex-col">
+          <div className="flex justify-between items-center mb-10">
+            <span className="font-black text-red-800 tracking-widest uppercase">Menu</span>
+            <X size={32} onClick={() => setIsOpen(false)} className="text-gray-400" />
           </div>
-          
-          <div className="flex flex-col p-6 gap-6">
+          <div className="flex flex-col gap-6 overflow-y-auto">
             {navLinks.map((link) => (
-              <Link 
-                key={link.name} 
-                to={link.url} 
-                className="text-lg font-black text-gray-800 uppercase hover:text-orange-600"
-                onClick={() => setIsOpen(false)}
-              >
+              <Link key={link.name} to={link.url} className="text-2xl font-black text-gray-800 uppercase border-b border-gray-100 pb-2" onClick={() => setIsOpen(false)}>
                 {link.name}
               </Link>
             ))}
             <Link 
               to="/donation" 
-              className="mt-4 bg-red-800 text-white text-center py-4 rounded-xl font-black tracking-widest"
+              className="mt-4 flex items-center justify-center gap-3 bg-red-800 text-white py-4 rounded-2xl font-black tracking-widest"
               onClick={() => setIsOpen(false)}
             >
-              DONATE
+              <Heart size={20} className="fill-current" />
+              DONATE NOW
             </Link>
           </div>
         </div>
-      </div>
+      )}
     </header>
   )
 }
