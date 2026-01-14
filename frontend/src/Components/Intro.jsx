@@ -26,7 +26,7 @@ const Intro = () => {
           <div className="overflow-hidden rounded-[2rem] shadow-2xl border-[4px] md:border-[8px] border-white relative">
             <div className="relative aspect-[4/5] sm:aspect-[16/10] lg:aspect-[4/5]">
               <img 
-                src="../public/image.png" 
+                src="/image.png" 
                 alt="Shree Varadha Vallabha Mahaganpati" 
                 className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-1000"
               />
