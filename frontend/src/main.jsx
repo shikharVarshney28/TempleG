@@ -12,6 +12,8 @@ import ErrorPage from './Components/ErrorPage.jsx'
 import Donation from './Components/Donation.jsx'
 import Events from './Components/Events.jsx'
 import DailyDarshan from './Components/DailyDarshan.jsx'
+import TempleHistory from './Components/TempleHistory.jsx'
+import BoardOfDirectors from './Components/BoardOfDirectors.jsx'
 
 let app = createBrowserRouter([
   { path: '/', 
@@ -41,6 +43,14 @@ let app = createBrowserRouter([
       {
         path:"/ddarshan",
         element:<DailyDarshan/>
+      },
+      {
+        path : "/history",
+        element : <TempleHistory/>
+      },
+      {
+        path : "/management",
+        element : <BoardOfDirectors/>
       }
     ]
   }
