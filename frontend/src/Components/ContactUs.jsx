@@ -51,8 +51,9 @@ const ContactUs = () => {
               <div className="space-y-8">
                 {[
                 { icon: <Flower2 />, title: "Manager", val: "Mr Nitin Sharma" },
+                { icon: <Flower2 />, title: "Priest", val: "Pt. Lakhan Dixit" },
                   { icon: <MapPin />, title: "Address", val: "Bypass Road, Chalesar, Agra, UP" },
-                  { icon: <Phone />, title: "Phone", val: "+91 9999999999" },
+                  { icon: <Phone />, title: "Phone", val: "+91 9997512016" },
                   { icon: <Mail />, title: "Email", val: "demo08843@gmail.com" }
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-6 group">
