@@ -14,6 +14,7 @@ import Events from './Components/Events.jsx'
 import DailyDarshan from './Components/DailyDarshan.jsx'
 import TempleHistory from './Components/TempleHistory.jsx'
 import BoardOfDirectors from './Components/BoardOfDirectors.jsx'
+import ContactUs from './Components/ContactUs.jsx'
 
 let app = createBrowserRouter([
   { path: '/', 
@@ -51,6 +52,10 @@ let app = createBrowserRouter([
       {
         path : "/management",
         element : <BoardOfDirectors/>
+      },
+      {
+        path : "/contact",
+        element : <ContactUs/>
       }
     ]
   }
