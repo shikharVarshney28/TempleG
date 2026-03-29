@@ -12,7 +12,7 @@ const ContactUs = () => {
 
   // SOCIAL LINKS DATA
   const socialLinks = [
-    { icon: <Instagram size={20} />, link: "https://www.instagram.com/varadavallabhaganpatimandir?igsh=bDdveTVqb3VncWpy", color: "hover:bg-pink-600", label: "Instagram" },
+    { icon: <Instagram size={20} />, link: "https://www.instagram.com/varadavallabhaganpatimandir", color: "hover:bg-pink-600", label: "Instagram" },
     { icon: <Facebook size={20} />, link: "https://facebook.com/yourpage", color: "hover:bg-blue-700", label: "Facebook" },
     { icon: <MessageCircle size={20} />, link: "https://wa.me/919997512016", color: "hover:bg-green-600", label: "WhatsApp" },
   ];
