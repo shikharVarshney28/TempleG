@@ -12,9 +12,9 @@ const ContactUs = () => {
 
   // सोशल मीडिया लिंक्स डेटा (लेबल हिंदी में)
   const socialLinks = [
-    { icon: <Instagram size={20} />, link: "https://www.instagram.com/varadavallabhaganpatimandir", color: "hover:bg-pink-600", label: "इन्स्टाग्राम" },
-    { icon: <Facebook size={20} />, link: "https://facebook.com/yourpage", color: "hover:bg-blue-700", label: "फेसबुक" },
-    { icon: <MessageCircle size={20} />, link: "https://wa.me/919997512016", color: "hover:bg-green-600", label: "व्हाट्सएप" },
+    { icon: <Instagram size={20} />, link: "https://www.instagram.com/varadavallabhaganpatimandir", color: "hover:bg-pink-600", label: "Instagram" },
+    { icon: <Facebook size={20} />, link: "https://facebook.com/yourpage", color: "hover:bg-blue-700", label: "Facebook" },
+    { icon: <MessageCircle size={20} />, link: "https://wa.me/919997512016", color: "hover:bg-green-600", label: "WhatsApp" },
   ];
 
   const sendEmail = (e) => {
