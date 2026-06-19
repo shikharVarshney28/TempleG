@@ -15,6 +15,7 @@ import DailyDarshan from './Components/DailyDarshan.jsx'
 import TempleHistory from './Components/TempleHistory.jsx'
 import BoardOfDirectors from './Components/BoardOfDirectors.jsx'
 import ContactUs from './Components/ContactUs.jsx'
+import { DataProvider } from './Components/DataContext.jsx'
 
 let app = createBrowserRouter([
   { path: '/', 
@@ -62,7 +63,9 @@ let app = createBrowserRouter([
 ])
 
 createRoot(document.getElementById('root')).render(
-  <RouterProvider router={app}>
-    <App />
-  </RouterProvider>
+  <DataProvider>
+    <RouterProvider router={app}>
+      <App />
+    </RouterProvider>
+  </DataProvider>
 )

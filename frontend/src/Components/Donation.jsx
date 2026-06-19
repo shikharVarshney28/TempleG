@@ -1,30 +1,11 @@
-import React, { useState, useEffect } from 'react'
-import { Landmark, Smartphone, Copy, Check, Info, Heart, ShieldCheck, Loader2 } from 'lucide-react'
-import { client } from '../sanityClient' // Adjust path to your sanity client
+import React, { useState } from 'react';
+import { useData } from './DataContext'; // ग्लोबल कॉन्टेक्स्ट इम्पोर्ट
+import { urlFor } from '../sanityClient'; // इमेज बिल्डर इम्पोर्ट
+import { Landmark, Smartphone, Copy, Check, Info, Heart, ShieldCheck, Sun } from 'lucide-react';
 
 const Donation = () => {
+  const { donation, loading } = useData(); // ग्लोबल स्टेट से डेटा निकालना
   const [copiedField, setCopiedField] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    const fetchDonationData = async () => {
-      try {
-        // Fetches the first document of type "donation"
-        const query = `*[_type == "donation"][0]{
-          ...,
-          "qrCodeUrl": qrCode.asset->url
-        }`;
-        const result = await client.fetch(query);
-        setData(result);
-      } catch (error) {
-        console.error("Error fetching donation data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchDonationData();
-  }, []);
 
   const handleCopy = (text, field) => {
     if (!text) return;
@@ -35,12 +16,12 @@ const Donation = () => {
 
   if (loading) return (
     <div className="min-h-screen flex items-center justify-center bg-[#fffcf9]">
-      <Loader2 className="animate-spin text-orange-600" size={40} />
+      <Sun className="animate-spin text-orange-600" size={40} />
     </div>
   );
 
-  // Fallback if no data is found in Sanity
-  if (!data) return <div className="text-center py-40">No donation details found.</div>;
+  // यदि सॅनिटी से कोई डोनेशन डेटा प्राप्त नहीं होता है
+  if (!donation) return <div className="text-center py-40 font-bold text-gray-500">दान विवरण उपलब्ध नहीं है।</div>;
 
   return (
     <main className="pt-32 pb-20 bg-[#fffcf9] font-sans">
@@ -50,13 +31,13 @@ const Donation = () => {
         <div className="text-center mb-16 space-y-4">
           <div className="flex items-center justify-center gap-2 mb-4">
              <Heart className="text-red-700 fill-red-700" size={20} />
-             <span className="text-red-800 font-black tracking-[0.4em] text-xs uppercase">Seva & Contribution</span>
+             <span className="text-red-800 font-black tracking-[0.4em] text-xs uppercase">सेवा एवं योगदान</span>
           </div>
           <h1 className="text-5xl md:text-7xl font-black text-red-950 tracking-tighter uppercase leading-none">
-            {data.title.split(' ')[0]} <span className="text-orange-600">{data.title.split(' ').slice(1).join(' ')}</span>
+            {donation.title?.split(' ')[0]} <span className="text-orange-600">{donation.title?.split(' ').slice(1).join(' ')}</span>
           </h1>
           <p className="text-gray-500 font-medium max-w-2xl mx-auto text-lg italic">
-            "Your contribution fuels the sacred traditions, temple development, and our mission to serve the community."
+            "आपका योगदान पवित्र परंपराओं, मंदिर के विकास और समाज की सेवा करने के हमारे मिशन को शक्ति प्रदान करता है।"
           </p>
         </div>
 
@@ -67,21 +48,21 @@ const Donation = () => {
             <div className="relative rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white aspect-[4/5]">
               <img 
                 src="/donation-ganesha.jpg" 
-                alt="Temple Seva" 
+                alt="मन्दिर सेवा" 
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-red-950/80 via-transparent to-transparent"></div>
               <div className="absolute bottom-10 left-10 right-10">
-                <p className="text-orange-400 font-black tracking-widest text-xs uppercase mb-2">Temple Trust</p>
-                <h3 className="text-white text-3xl font-bold leading-tight uppercase">Every Contribution is a Sacred Blessing</h3>
+                <p className="text-orange-400 font-black tracking-widest text-xs uppercase mb-2">मंदिर ट्रस्ट</p>
+                <h3 className="text-white text-3xl font-bold leading-tight uppercase">प्रत्येक योगदान एक दिव्य आशीर्वाद है</h3>
               </div>
             </div>
 
             <div className="bg-white p-8 rounded-[2rem] shadow-sm border border-orange-100 flex gap-4">
                <ShieldCheck className="text-green-600 shrink-0" size={28} />
                <div>
-                 <h4 className="font-black text-gray-900 uppercase text-sm mb-1 tracking-tight">100% Secure & Direct</h4>
-                 <p className="text-gray-500 text-sm leading-relaxed">All donations go directly to the Temple Trust account for temple maintenance and Bhandara services.</p>
+                 <h4 className="font-black text-gray-900 uppercase text-sm mb-1 tracking-tight">100% सुरक्षित एवं प्रत्यक्ष</h4>
+                 <p className="text-gray-500 text-sm leading-relaxed">सभी दान राशि सीधे मंदिर के रखरखाव और भंडारा सेवाओं के लिए मंदिर ट्रस्ट के खाते में जाती है।</p>
                </div>
             </div>
           </div>
@@ -95,17 +76,17 @@ const Donation = () => {
                 <div className="w-full md:w-1/2 text-center md:text-left space-y-4">
                    <div className="flex items-center gap-2 justify-center md:justify-start">
                       <Smartphone className="text-orange-600" size={18} />
-                      <span className="text-orange-700 font-bold uppercase tracking-widest text-xs">Fast & Digital</span>
+                      <span className="text-orange-700 font-bold uppercase tracking-widest text-xs">त्वरित एवं डिजिटल</span>
                    </div>
-                   <h2 className="text-3xl font-black text-red-950 uppercase tracking-tighter">Scan to Pay</h2>
-                   <p className="text-gray-600 text-sm">Scan this QR code with any UPI app to make an instant contribution.</p>
+                   <h2 className="text-3xl font-black text-red-950 uppercase tracking-tighter">स्कैन करके भुगतान करें</h2>
+                   <p className="text-gray-600 text-sm">तुरंत योगदान करने के लिए किसी भी UPI ऐप (जैसे PhonePe, Google Pay, Paytm) से इस QR कोड को स्कैन करें।</p>
                    
                    <div className="pt-4">
                      <button 
-                       onClick={() => handleCopy(data.upiId, 'upi')}
+                       onClick={() => handleCopy(donation.upiId, 'upi')}
                        className="flex items-center gap-3 bg-white px-5 py-3 rounded-2xl shadow-sm hover:shadow-md transition-all group"
                      >
-                       <span className="text-xs font-black text-gray-800 tracking-wider uppercase">{data.upiId}</span>
+                       <span className="text-xs font-black text-gray-800 tracking-wider uppercase">{donation.upiId}</span>
                        {copiedField === 'upi' ? <Check size={16} className="text-green-600" /> : <Copy size={16} className="text-orange-400 group-hover:text-orange-600" />}
                      </button>
                    </div>
@@ -113,10 +94,15 @@ const Donation = () => {
 
                 <div className="w-full md:w-1/2 flex justify-center">
                    <div className="bg-white p-4 rounded-3xl shadow-xl border-4 border-orange-200">
-                      {data.qrCodeUrl ? (
-                        <img src={data.qrCodeUrl} alt="Temple QR Code" className="w-48 h-48 md:w-56 md:h-56 object-contain" />
+                      {donation.qrCodeUrl ? (
+                        /* ऑप्टिमाइज़्ड वेबपी क्यूआर कोड इमेज */
+                        <img 
+                          src={urlFor(donation.qrCode || donation.qrCodeUrl).width(300).format('webp').url()} 
+                          alt="मंदिर यूपीआई क्यूआर कोड" 
+                          className="w-48 h-48 md:w-56 md:h-56 object-contain" 
+                        />
                       ) : (
-                        <div className="w-48 h-48 flex items-center justify-center text-gray-300 italic">No QR Uploaded</div>
+                        <div className="w-48 h-48 flex items-center justify-center text-gray-300 italic">क्यूआर कोड उपलब्ध नहीं है</div>
                       )}
                    </div>
                 </div>
@@ -127,21 +113,21 @@ const Donation = () => {
             <div className="bg-white rounded-[2.5rem] p-8 md:p-12 border border-gray-100 shadow-xl shadow-gray-200/50">
                <div className="flex items-center gap-3 mb-8">
                   <Landmark className="text-red-800" size={24} />
-                  <h2 className="text-3xl font-black text-red-950 uppercase tracking-tighter">Bank Transfer</h2>
+                  <h2 className="text-3xl font-black text-red-950 uppercase tracking-tighter">बैंक ट्रांसफर</h2>
                </div>
 
                <div className="grid grid-cols-1 md:grid-cols-2 gap-y-8 gap-x-12">
                   {[
-                    { label: "Account Name", value: data.accountName, key: 'name' },
-                    { label: "Bank Name", value: data.bankName, key: 'bank' },
-                    { label: "Account Number", value: data.accountNumber, key: 'acc' },
-                    { label: "IFSC Code", value: data.ifscCode, key: 'ifsc' },
-                    { label: "Branch", value: data.branch, key: 'branch' },
+                    { label: "खाताधारक का नाम", value: donation.accountName, key: 'name' },
+                    { label: "बैंक का नाम", value: donation.bankName, key: 'bank' },
+                    { label: "खाता संख्या (Account Number)", value: donation.accountNumber, key: 'acc' },
+                    { label: "आईएफएससी कोड (IFSC Code)", value: donation.ifscCode, key: 'ifsc' },
+                    { label: "बैंक शाखा (Branch)", value: donation.branch, key: 'branch' },
                   ].map((item) => (
                     <div key={item.key} className="group flex justify-between items-end border-b border-gray-50 pb-2">
                       <div>
                         <p className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] mb-1">{item.label}</p>
-                        <p className="text-sm font-bold text-gray-800 uppercase leading-tight">{item.value || 'N/A'}</p>
+                        <p className="text-sm font-bold text-gray-800 uppercase leading-tight">{item.value || 'उपलब्ध नहीं'}</p>
                       </div>
                       <button 
                         onClick={() => handleCopy(item.value, item.key)}
@@ -156,7 +142,7 @@ const Donation = () => {
                <div className="mt-10 p-5 bg-red-50 rounded-2xl flex gap-4">
                   <Info className="text-red-800 shrink-0" size={20} />
                   <p className="text-[11px] md:text-xs text-red-900/70 font-medium leading-relaxed">
-                    <strong>Note:</strong> After making a transfer, please send the transaction screenshot along with your name and address to our office WhatsApp to receive your donation receipt.
+                    <strong>विशेष सूचना:</strong> बैंक ट्रांसफर या ऑनलाइन भुगतान करने के पश्चात, अपनी दान रसीद प्राप्त करने के लिए कृपया ट्रांजैक्शन का स्क्रीनशॉट अपने नाम और पते के साथ मंदिर कार्यालय के आधिकारिक व्हाट्सएप नंबर पर अवश्य भेजें।
                   </p>
                </div>
             </div>
@@ -164,7 +150,7 @@ const Donation = () => {
         </div>
       </div>
     </main>
-  )
-}
+  );
+};
 
-export default Donation
+export default Donation;

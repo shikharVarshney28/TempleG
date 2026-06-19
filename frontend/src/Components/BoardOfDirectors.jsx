@@ -2,30 +2,33 @@ import React from 'react';
 import { Linkedin, Mail, GraduationCap } from 'lucide-react';
 
 const BoardOfDirectors = () => {
-  // DIRECTORS DATA ARRAY - Easy to update in the future
+  // निदेशकों का डेटा एरे
   const directors = [
     {
-      name: "Hari Mohan Garg",
-      role: "Managing Director",
-      image: "https://via.placeholder.com/400x500", // Replace with real photo
-      education: "Industry Veteran since 1982",
-      bio: "The visionary founder of NRL Group. Starting from the logistics industry in 1982, he built a strong foundation that allowed the group to expand into petroleum and the automobile sector. Under his leadership, NRL has become a respected brand in Western Uttar Pradesh.",
+      id: "dir-1", // React key चेतावनी को हटाने के लिए यूनीक आईडी
+      name: "हरी मोहन गर्ग",
+      role: "प्रबंध निदेशक (Managing Director)",
+      image: "https://via.placeholder.com/400x500", 
+      education: "1982 से उद्योग जगत के अनुभवी",
+      bio: "एनआरएल (NRL) ग्रुप के दूरदर्शी संस्थापक। वर्ष 1982 में लॉजिस्टिक्स उद्योग से शुरुआत करते हुए, उन्होंने एक मजबूत आधारशिला रखी, जिसने समूह को पेट्रोलियम और ऑटोमोबाइल क्षेत्र में विस्तार करने में सक्षम बनाया। उनके कुशल नेतृत्व में, NRL पश्चिमी उत्तर प्रदेश में एक अत्यंत प्रतिष्ठित ब्रांड बन चुका है।",
       linkedin: "#"
     },
     {
-      name: "Rohit Garg",
-      role: "Director",
-      image: "https://via.placeholder.com/400x500", // Replace with real photo
-      education: "Civil Engineer (Melbourne University), MBA (SIBM Pune)",
-      bio: "A technical powerhouse with a global perspective. Rohit joined the group in 2012, successfully establishing the Mahindra Truck & Bus division before launching the Hyundai car dealership in 2014. He focuses on operational excellence and customer loyalty.",
+      id: "dir-2",
+      name: "रोहित गर्ग",
+      role: "निदेशक (Director)",
+      image: "https://via.placeholder.com/400x500", 
+      education: "सिविल इंजीनियर (मेलबर्न यूनिवर्सिटी), एमबीए (SIBM पुणे)",
+      bio: "वैश्विक दृष्टिकोण से समृद्ध एक तकनीकी पावरहाउस। रोहित वर्ष 2012 में समूह से जुड़े और 2014 में हुंडई (Hyundai) कार डीलरशिप शुरू करने से पहले महिंद्रा ट्रक एंड बस डिवीजन को सफलतापूर्वक स्थापित किया। वह परिचालन उत्कृष्टता और ग्राहक निष्ठा पर विशेष ध्यान केंद्रित करते हैं।",
       linkedin: "#"
     },
     {
-      name: "Siddhant Garg",
-      role: "Director",
-      image: "https://via.placeholder.com/400x500", // Replace with real photo
-      education: "Mechanical Engineer, Masters in Logistics (UK)",
-      bio: "Bringing international supply chain expertise from Scotland to India. Siddhant holds the distinction of being the youngest Dealer Principal for Hyundai. He drives the group's innovation, manpower development, and high-tech infrastructure initiatives.",
+      id: "dir-3",
+      name: "सिद्धांत गर्ग",
+      role: "निदेशक (Director)",
+      image: "https://via.placeholder.com/400x500", 
+      education: "मैकेनिकल इंजीनियर, मास्टर्स इन लॉजिस्टिक्स (यूके)",
+      bio: "स्कॉटलैंड से भारत तक अंतरराष्ट्रीय आपूर्ति श्रृंखला (Supply Chain) की विशेषज्ञता लाने वाले सिद्धांत को हुंडई के सबसे युवा डीलर प्रिंसिपल होने का गौरव प्राप्त है। वह समूह के नवाचार (Innovation), मानव संसाधन विकास और हाई-टेक बुनियादी ढांचे की पहलों को गति देते हैं।",
       linkedin: "#"
     }
   ];
@@ -36,19 +39,19 @@ const BoardOfDirectors = () => {
         
         {/* HEADER */}
         <div className="text-center mb-20">
-          <h4 className="text-orange-600 font-black tracking-[0.3em] uppercase text-xs mb-4">Leadership Team</h4>
+          <h4 className="text-orange-600 font-black tracking-[0.3em] uppercase text-xs mb-4">नेतृत्व टीम</h4>
           <h2 className="text-5xl md:text-6xl font-black text-red-900 tracking-tighter leading-none">
-            Board of <span className="text-orange-500 italic">Directors</span>
+            निदेशक <span className="text-orange-500 italic">मंडल</span>
           </h2>
           <p className="text-gray-500 mt-6 max-w-2xl mx-auto font-medium">
-            Our directors guide our businesses in achieving their strategic goals, ensuring that our organization continues to provide a platform for success.
+            हमारे निदेशक रणनीतिक लक्ष्यों को प्राप्त करने में हमारे व्यवसायों का मार्गदर्शन करते हैं, यह सुनिश्चित करते हुए कि हमारा संगठन सफलता के लिए एक मजबूत मंच प्रदान करता रहे।
           </p>
         </div>
 
         {/* DIRECTORS GRID */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          {directors.map((member, index) => (
-            <div key={index} className="group">
+          {directors.map((member) => (
+            <div key={member.id} className="group">
               {/* IMAGE CONTAINER */}
               <div className="relative overflow-hidden rounded-[2rem] bg-gray-100 aspect-[4/5] mb-6 shadow-lg border border-gray-100">
                 <img 
@@ -57,7 +60,7 @@ const BoardOfDirectors = () => {
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
                 />
                 
-                {/* Social Overlay */}
+                {/* सोशल मीडिया ओवरले */}
                 <div className="absolute bottom-6 right-6 flex flex-col gap-3 translate-y-20 group-hover:translate-y-0 transition-transform duration-500">
                   <a href={member.linkedin} className="p-3 bg-white text-blue-600 rounded-full shadow-xl hover:bg-blue-600 hover:text-white transition-colors">
                     <Linkedin size={20} />
@@ -76,7 +79,8 @@ const BoardOfDirectors = () => {
                 </div>
 
                 <div className="flex items-center gap-2 text-gray-400">
-                  <GraduationCap size={16} />
+                  {/* त्रुटि सुधार: यहाँ वापस सही Lucide आइकॉन GraduationCap लगा दिया है */}
+                  <GraduationCap size={16} className="text-gray-400 shrink-0" />
                   <span className="text-[11px] font-bold uppercase tracking-tight">{member.education}</span>
                 </div>
 
@@ -90,7 +94,7 @@ const BoardOfDirectors = () => {
 
         {/* CORPORATE FOOTER */}
         <div className="mt-20 pt-10 border-t border-gray-100 text-center">
-           <p className="text-gray-300 font-black text-[10px] tracking-[0.5em] uppercase">Driving Excellence Since 1982 — NRL Group Agra</p>
+           <p className="text-gray-300 font-black text-[10px] tracking-[0.5em] uppercase">1982 से निरंतर उत्कृष्टता की ओर — एनआरएल ग्रुप आगरा</p>
         </div>
       </div>
     </section>

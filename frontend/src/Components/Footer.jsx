@@ -12,6 +12,47 @@ import {
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const arr = [
+    {
+      "name" : "Home",
+      "link" : "/"
+    }
+    ,
+    {
+      "name" : "About Us",
+      "link" : "/management"
+    },
+    {
+      "name" : "Gallery",
+      "link" : "/gallery"
+    },
+    {
+      "name" : "Event",
+      "link" : "/events"
+    },
+    {
+      "name" : "Contact Us",
+      "link" : "/contact"
+    }
+  ]
+  const services = [
+    {
+      "name" : 'Donations', 
+      "link" : "/donation"
+    },
+    {
+      "name" : 'Virtual Darshan',
+      "link" : "/ddarshan"
+    } ,
+    {
+      "name" : 'Pooja Timings', 
+      "link" : "/"
+    },
+    {
+      "name" : 'News',
+      "link" : "/events"
+    }
+  ]
 
   return (
     <footer className="bg-gray-50 border-t border-gray-200 font-sans pt-16 pb-8">
@@ -39,11 +80,11 @@ const Footer = () => {
           <div>
             <h4 className="text-xs font-black text-gray-900 uppercase tracking-widest mb-6">Quick Links</h4>
             <ul className="space-y-3 text-sm font-bold text-gray-500">
-              {['Home', 'About Us', 'Gallery', 'Events', 'Contact'].map((item) => (
+              {arr.map((item) => (
                 <li key={item}>
-                  <Link to={`/${item.toLowerCase().replace(' ', '-')}`} className="hover:text-red-700 flex items-center gap-1 transition-colors group">
+                  <Link to={item.link} className="hover:text-red-700 flex items-center gap-1 transition-colors group">
                     <ChevronRight size={14} className="opacity-0 group-hover:opacity-100 -ml-4 group-hover:ml-0 transition-all" />
-                    {item}
+                    {item.name}
                   </Link>
                 </li>
               ))}
@@ -51,12 +92,15 @@ const Footer = () => {
           </div>
 
           {/* 3. SUPPORT & SERVICES */}
-          <div>
-            <h4 className="text-xs font-black text-gray-900 uppercase tracking-widest mb-6">Services</h4>
+        <div>
+            <h4 className="text-xs font-black text-gray-900 uppercase tracking-widest mb-6">Quick Links</h4>
             <ul className="space-y-3 text-sm font-bold text-gray-500">
-              {['Donations', 'Virtual Darshan', 'Savamani Booking', 'Pooja Timings', 'News'].map((item) => (
-                <li key={item} className="hover:text-red-700 cursor-pointer transition-colors">
-                  {item}
+              {services.map((item) => (
+                <li key={item}>
+                  <Link to={item.link} className="hover:text-red-700 flex items-center gap-1 transition-colors group">
+                    <ChevronRight size={14} className="opacity-0 group-hover:opacity-100 -ml-4 group-hover:ml-0 transition-all" />
+                    {item.name}
+                  </Link>
                 </li>
               ))}
             </ul>
