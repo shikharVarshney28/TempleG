@@ -15,6 +15,7 @@ import DailyDarshan from './Components/DailyDarshan.jsx'
 import TempleHistory from './Components/TempleHistory.jsx'
 import BoardOfDirectors from './Components/BoardOfDirectors.jsx'
 import ContactUs from './Components/ContactUs.jsx'
+import HowToReach from './Components/HowToReach.jsx'
 import { DataProvider } from './Components/DataContext.jsx'
 
 let app = createBrowserRouter([
@@ -57,6 +58,10 @@ let app = createBrowserRouter([
       {
         path : "/contact",
         element : <ContactUs/>
+      },
+      {
+        path : "/how_to_reach",
+        element : <HowToReach/>
       }
     ]
   }

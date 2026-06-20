@@ -85,8 +85,8 @@ const About = () => {
                   {q.icon}
                 </div>
                 <div>
-                  <h4 className="font-black text-red-900 text-xs uppercase tracking-wider mb-0.5">{q.title}</h4>
-                  <p className="text-[11px] text-gray-500 leading-tight font-medium">{q.desc}</p>
+                  <h4 className="font-black text-red-900 text-sm uppercase tracking-wider mb-0.5">{q.title}</h4>
+                  <p className="text-[14px] text-gray-500 leading-tight font-medium">{q.desc}</p>
                 </div>
               </div>
             ))}

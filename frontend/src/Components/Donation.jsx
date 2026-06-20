@@ -24,19 +24,24 @@ const Donation = () => {
   if (!donation) return <div className="text-center py-40 font-bold text-gray-500">दान विवरण उपलब्ध नहीं है।</div>;
 
   return (
-    <main className="pt-32 pb-20 bg-[#fffcf9] font-sans">
+    <main className="pt-32 pb-20 bg-[#fffcf9] font-sans antialiased selection:bg-orange-200">
       <div className="max-w-7xl mx-auto px-6">
         
-        {/* --- PAGE HEADER --- */}
-        <div className="text-center mb-16 space-y-4">
-          <div className="flex items-center justify-center gap-2 mb-4">
-             <Heart className="text-red-700 fill-red-700" size={20} />
-             <span className="text-red-800 font-black tracking-[0.4em] text-xs uppercase">सेवा एवं योगदान</span>
+        {/* --- PAGE HEADER (मुख्य हेडिंग सेक्शन) --- */}
+        <div className="text-center mb-20 space-y-6">
+          <div className="flex items-center justify-center gap-2 mb-2">
+             <Heart className="text-red-700 fill-red-700 animate-pulse" size={22} />
+             <span className="text-red-800 font-black tracking-widest text-sm md:text-base">
+               सेवा एवं योगदान
+             </span>
           </div>
-          <h1 className="text-5xl md:text-7xl font-black text-red-950 tracking-tighter uppercase leading-none">
-            {donation.title?.split(' ')[0]} <span className="text-orange-600">{donation.title?.split(' ').slice(1).join(' ')}</span>
+          
+          {/* भव्य और बड़ी हेडिंग - मोबाइल पर text-5xl और बड़े स्क्रीन्स पर lg:text-8xl */}
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-red-950 leading-[1.15] md:leading-[1.2] tracking-tight px-2">
+            {donation.title?.split(' ')[0]} <span className="text-orange-600 block sm:inline">{donation.title?.split(' ').slice(1).join(' ')}</span>
           </h1>
-          <p className="text-gray-500 font-medium max-w-2xl mx-auto text-lg italic">
+          
+          <p className="text-gray-600 font-semibold max-w-3xl mx-auto text-lg md:text-xl leading-relaxed italic border-t border-b border-orange-100 py-4 px-4">
             "आपका योगदान पवित्र परंपराओं, मंदिर के विकास और समाज की सेवा करने के हमारे मिशन को शक्ति प्रदान करता है।"
           </p>
         </div>
@@ -51,17 +56,19 @@ const Donation = () => {
                 alt="मन्दिर सेवा" 
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-red-950/80 via-transparent to-transparent"></div>
-              <div className="absolute bottom-10 left-10 right-10">
-                <p className="text-orange-400 font-black tracking-widest text-xs uppercase mb-2">मंदिर ट्रस्ट</p>
-                <h3 className="text-white text-3xl font-bold leading-tight uppercase">प्रत्येक योगदान एक दिव्य आशीर्वाद है</h3>
+              <div className="absolute inset-0 bg-gradient-to-t from-red-950/90 via-red-950/20 to-transparent"></div>
+              <div className="absolute bottom-10 left-10 right-10 z-10">
+                <p className="text-orange-400 font-black tracking-widest text-sm uppercase mb-3">मंदिर ट्रस्ट</p>
+                <h3 className="text-white text-3xl md:text-4xl font-black leading-tight">
+                  प्रत्येक योगदान एक दिव्य आशीर्वाद है
+                </h3>
               </div>
             </div>
 
             <div className="bg-white p-8 rounded-[2rem] shadow-sm border border-orange-100 flex gap-4">
                <ShieldCheck className="text-green-600 shrink-0" size={28} />
                <div>
-                 <h4 className="font-black text-gray-900 uppercase text-sm mb-1 tracking-tight">100% सुरक्षित एवं प्रत्यक्ष</h4>
+                 <h4 className="font-extrabold text-gray-900 text-base mb-1 tracking-tight">100% सुरक्षित एवं प्रत्यक्ष</h4>
                  <p className="text-gray-500 text-sm leading-relaxed">सभी दान राशि सीधे मंदिर के रखरखाव और भंडारा सेवाओं के लिए मंदिर ट्रस्ट के खाते में जाती है।</p>
                </div>
             </div>
@@ -74,17 +81,19 @@ const Donation = () => {
             <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-[2.5rem] p-8 md:p-12 border border-orange-200">
               <div className="flex flex-col md:flex-row gap-10 items-center">
                 <div className="w-full md:w-1/2 text-center md:text-left space-y-4">
-                   <div className="flex items-center gap-2 justify-center md:justify-start">
-                      <Smartphone className="text-orange-600" size={18} />
-                      <span className="text-orange-700 font-bold uppercase tracking-widest text-xs">त्वरित एवं डिजिटल</span>
+                   <div className="flex items-center gap-2 justify-center md:justify-start mb-2">
+                      <Smartphone className="text-orange-600" size={20} />
+                      <span className="text-orange-700 font-black tracking-wider text-xs md:text-sm">त्वरित एवं डिजिटल</span>
                    </div>
-                   <h2 className="text-3xl font-black text-red-950 uppercase tracking-tighter">स्कैन करके भुगतान करें</h2>
-                   <p className="text-gray-600 text-sm">तुरंत योगदान करने के लिए किसी भी UPI ऐप (जैसे PhonePe, Google Pay, Paytm) से इस QR कोड को स्कैन करें।</p>
+                   <h2 className="text-3xl md:text-4xl font-black text-red-950 leading-tight mb-4">
+                     स्कैन करके भुगतान करें
+                   </h2>
+                   <p className="text-gray-600 text-sm leading-relaxed">तुरंत योगदान करने के लिए किसी भी UPI ऐप (जैसे PhonePe, Google Pay, Paytm) से इस QR कोड को स्कैन करें।</p>
                    
-                   <div className="pt-4">
+                   <div className="pt-2 flex justify-center md:justify-start">
                      <button 
                        onClick={() => handleCopy(donation.upiId, 'upi')}
-                       className="flex items-center gap-3 bg-white px-5 py-3 rounded-2xl shadow-sm hover:shadow-md transition-all group"
+                       className="flex items-center gap-3 bg-white px-5 py-3 rounded-2xl shadow-sm hover:shadow-md transition-all group border border-orange-100"
                      >
                        <span className="text-xs font-black text-gray-800 tracking-wider uppercase">{donation.upiId}</span>
                        {copiedField === 'upi' ? <Check size={16} className="text-green-600" /> : <Copy size={16} className="text-orange-400 group-hover:text-orange-600" />}
@@ -95,7 +104,6 @@ const Donation = () => {
                 <div className="w-full md:w-1/2 flex justify-center">
                    <div className="bg-white p-4 rounded-3xl shadow-xl border-4 border-orange-200">
                       {donation.qrCodeUrl ? (
-                        /* ऑप्टिमाइज़्ड वेबपी क्यूआर कोड इमेज */
                         <img 
                           src={urlFor(donation.qrCode || donation.qrCodeUrl).width(300).format('webp').url()} 
                           alt="मंदिर यूपीआई क्यूआर कोड" 
@@ -111,9 +119,11 @@ const Donation = () => {
 
             {/* 2. Bank Details Card */}
             <div className="bg-white rounded-[2.5rem] p-8 md:p-12 border border-gray-100 shadow-xl shadow-gray-200/50">
-               <div className="flex items-center gap-3 mb-8">
-                  <Landmark className="text-red-800" size={24} />
-                  <h2 className="text-3xl font-black text-red-950 uppercase tracking-tighter">बैंक ट्रांसफर</h2>
+               <div className="flex items-center gap-4 mb-8">
+                  <Landmark className="text-red-800 shrink-0" size={32} />
+                  <h2 className="text-3xl md:text-4xl font-black text-red-950 leading-tight">
+                    बैंक ट्रांसफर विवरण
+                  </h2>
                </div>
 
                <div className="grid grid-cols-1 md:grid-cols-2 gap-y-8 gap-x-12">
@@ -124,10 +134,10 @@ const Donation = () => {
                     { label: "आईएफएससी कोड (IFSC Code)", value: donation.ifscCode, key: 'ifsc' },
                     { label: "बैंक शाखा (Branch)", value: donation.branch, key: 'branch' },
                   ].map((item) => (
-                    <div key={item.key} className="group flex justify-between items-end border-b border-gray-50 pb-2">
+                    <div key={item.key} className="group flex justify-between items-end border-b border-gray-100 pb-2">
                       <div>
-                        <p className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] mb-1">{item.label}</p>
-                        <p className="text-sm font-bold text-gray-800 uppercase leading-tight">{item.value || 'उपलब्ध नहीं'}</p>
+                        <p className="text-[14.5px] font-extrabold text-gray-400 tracking-wide mb-1">{item.label}</p>
+                        <p className="text-sm font-bold text-gray-800 leading-tight">{item.value || 'उपलब्ध नहीं'}</p>
                       </div>
                       <button 
                         onClick={() => handleCopy(item.value, item.key)}

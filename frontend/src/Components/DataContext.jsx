@@ -7,15 +7,21 @@ export const DataProvider = ({ children }) => {
   // पूरी वेबसाइट का ग्लोबल डेटा स्टेट
   const [globalData, setGlobalData] = useState({
     darshan: null,
-    events: [],
+    events: { upcoming: [], past: [] },
     gallery: [],
-    donation: null, // यहाँ डोनेशन स्टेट जोड़ा गया है
+    donation: null,
     aboutInfo: null,
+    socials: null, // NEW: सोशल लिंक्स के लिए स्टेट जोड़ा गया
   });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const masterQuery = `{
+      "socials": *[_type == "socials"][0] {
+        instagram,
+        facebook,
+        whatsapp
+      },
       "darshan": *[_type == "darshan"] | order(date desc)[0] {
         date,
         deities[] {
@@ -24,12 +30,13 @@ export const DataProvider = ({ children }) => {
           image
         }
       },
-      "events": *[_type == "event"] | order(eventDate asc) {
-        _id,
-        title,
-        description,
-        eventDate,
-        image
+      "events": {
+        "upcoming": *[_type == "event" && (startTime >= now() || (startTime <= now() && endTime >= now()))] | order(startTime asc) {
+          ..., "imgUrl": image.asset->url
+        },
+        "past": *[_type == "event" && endTime < now()] | order(endTime desc)[0...10] {
+          ..., "imgUrl": image.asset->url
+        }
       },
       "gallery": *[_type == "gallery"] | order(_createdAt desc) {
         _id,
@@ -58,9 +65,10 @@ export const DataProvider = ({ children }) => {
       .then((data) => {
         setGlobalData({
           darshan: data.darshan || null,
-          events: data.events || [],
+          events: data.events || { upcoming: [], past: [] },
           gallery: data.gallery || [],
-          donation: data.donation || null, // स्टेट में डेटा सेट किया
+          donation: data.donation || null,
+          socials: data.socials || null, // NEW: फ़ेच किए गए सोशल डेटा को सेट किया
         });
         setLoading(false);
       })
