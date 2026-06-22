@@ -8,7 +8,7 @@ const HowToReach = () => {
   const templeAddress = "श्री वरद वल्लभा महागणपति मंदिर, छलेसर, एनएच-19 (आगरा-फिरोजाबाद हाईवे), आगरा, उत्तर प्रदेश - 282006";
   
   // अपडेटेड गूगल मैप्स ओरिजिनल नेविगेशन लिंक (भक्तों के लिए)
-  const googleMapsLink = "https://maps.google.com/?q=Varad+Vallabh+Ganpati+Temple+Chalesar+Agra+Uttar+Pradesh+282006";
+  const googleMapsLink = "https://maps.google.com/maps?q=Varad%20Vallabh%20Ganpati%20Temple%20Chalesar%20Agra%20Uttar%20Pradesh%20282006&t=&z=15&ie=UTF8&iwloc=&output=embed";
 
   const handleCopyAddress = () => {
     navigator.clipboard.writeText(templeAddress);

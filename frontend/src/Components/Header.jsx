@@ -75,7 +75,7 @@ const Header = () => {
         </div>
         <div className="flex flex-col">
           <h1 className="text-sm lg:text-xl xl:text-2xl font-black text-red-800 leading-normal tracking-tight">
-            वरद वल्लभ<br/>
+            वरद वल्लभा<br/>
             <span className="text-orange-600 block -mt-1">महागणपति मंदिर</span>
           </h1>
         </div>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Clock, Sun, Moon, Utensils, DoorClosed, Coffee, Shield, MapPin, Heart, ArrowRight, Flower2, Sparkles, X, Calendar } from 'lucide-react';
-
+import { Link } from 'react-router-dom';
 const TempleInfo = () => {
   // पॉपअप (Modal) स्टेट मैनेजमेंट
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -135,8 +135,8 @@ const TempleInfo = () => {
               </div>
 
               {/* Box 2: दान एवं सहयोग */}
-              <div 
-                onClick={() => alert("ऑनलाइन दान सेवा जल्द ही शुरू की जाएगी।")}
+              <Link to = "/donation">
+                <div
                 className="p-8 bg-orange-500 text-white rounded-[2rem] shadow-xl hover:scale-[1.02] transition-all cursor-pointer relative overflow-hidden group"
               >
                 <div className="absolute -right-4 -bottom-4 text-white/5 group-hover:scale-110 transition-transform">
@@ -150,6 +150,7 @@ const TempleInfo = () => {
                   <ArrowRight size={14} />
                 </div>
               </div>
+              </Link>
 
             </div>
           </div>
@@ -172,7 +173,7 @@ const TempleInfo = () => {
                 <div className="mb-6 flex bg-white/5 p-1.5 rounded-2xl border border-white/5">
                   <button 
                     onClick={() => setActiveTab("daily")}
-                    className={`flex-1 py-3 px-4 rounded-xl text-xs font-black uppercase tracking-wider transition-all flex items-center justify-center gap-2 ${activeTab === 'daily' ? 'bg-orange-500 text-white shadow-md' : 'text-gray-400 hover:text-white'}`}
+                    className={`flex-1 py-3 px-4 rounded-xl text-sm font-black uppercase tracking-wider transition-all flex items-center justify-center gap-2 ${activeTab === 'daily' ? 'bg-orange-500 text-white shadow-md' : 'text-gray-400 hover:text-white'}`}
                   >
                     <Clock size={14} />
                     दैनिक समय सारणी
@@ -205,7 +206,7 @@ const TempleInfo = () => {
                         </div>
                         <div>
                           <p className="text-sm font-black text-white tracking-tight leading-tight">{item.event}</p>
-                          <p className="text-[11px] text-gray-400 font-semibold mt-0.5">{item.time}</p>
+                          <p className="text-[14px] text-gray-400 font-semibold mt-0.5">{item.time}</p>
                         </div>
                       </div>
                       <ArrowRight size={12} className="text-gray-600 group-hover:text-orange-500 transition-colors shrink-0" />
@@ -217,13 +218,13 @@ const TempleInfo = () => {
                 <div className="mt-6 pt-5 border-t border-white/10 space-y-3">
                   
                   {/* शीतकालीन समय नोट */}
-                  <div className="p-3 bg-white/5 rounded-xl border border-white/5 text-[11px] text-gray-300 leading-normal">
+                  <div className="p-3 bg-white/5 rounded-xl border border-white/5 text-[14px] text-gray-300 leading-normal">
                     <span className="font-bold text-amber-400 block mb-0.5">❄️ शीत कालीन समय ध्यान दें:</span>
                     1 नवम्बर से 28/29 फरवरी तक सायं काल के सभी कार्यक्रम नियत समय से <strong>30 मिनट पूर्व</strong> संपन्न किए जाएंगे।
                   </div>
 
                   {/* महाअभिषेक एवं विशेष दिवस समय */}
-                  <div className="p-3 bg-white/5 rounded-xl border border-white/5 text-[11px] text-gray-300 grid grid-cols-2 gap-2">
+                  <div className="p-3 bg-white/5 rounded-xl border border-white/5 text-[14px] text-gray-300 grid grid-cols-2 gap-2">
                     <div>
                       <span className="font-bold text-orange-400 block">चतुर्थी महाअभिषेक:</span>
                       <span>प्रातः 6:00 (ग्रीष्म) / 7:00 (शीत)</span>
@@ -237,8 +238,8 @@ const TempleInfo = () => {
                   {/* संकष्टी चतुर्थी नोट */}
                   <div className="flex items-center gap-3 p-3.5 bg-orange-500/10 rounded-xl border border-orange-500/20">
                     <Heart className="text-orange-500 animate-pulse shrink-0" fill="currentColor" size={16} />
-                    <p className="text-[10px] font-bold text-gray-300 leading-tight">
-                      प्रत्येक माह की <span className="text-orange-400 underline">संकष्टी व विनायक चतुर्थी</span> तिथि पर प्रातः काल में दक्षिण शैली अनुसार महाअभिषेक एवं मोदक उत्सव मनाया जाता है।
+                    <p className="text-[14px] font-bold text-gray-300 leading-tight">
+                      प्रत्येक माह की <span className="text-orange-400 underline">संकष्टी व विनायक चतुर्थी</span> तिथि पर प्रातः काल में दक्षिण शैली अनुसार महाअभषेक एवं मोदक उत्सव मनाया जाता है।
                     </p>
                   </div>
                 </div>

@@ -52,7 +52,7 @@ const Donation = () => {
           <div className="lg:col-span-5 space-y-8">
             <div className="relative rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white aspect-[4/5]">
               <img 
-                src="/donation-ganesha.jpg" 
+                src="../Img_For_Donation.jpg" 
                 alt="मन्दिर सेवा" 
                 className="w-full h-full object-cover"
               />
@@ -151,7 +151,7 @@ const Donation = () => {
 
                <div className="mt-10 p-5 bg-red-50 rounded-2xl flex gap-4">
                   <Info className="text-red-800 shrink-0" size={20} />
-                  <p className="text-[11px] md:text-xs text-red-900/70 font-medium leading-relaxed">
+                  <p className="text-[20px] md:text-xs text-red-900/70 font-medium leading-relaxed">
                     <strong>विशेष सूचना:</strong> बैंक ट्रांसफर या ऑनलाइन भुगतान करने के पश्चात, अपनी दान रसीद प्राप्त करने के लिए कृपया ट्रांजैक्शन का स्क्रीनशॉट अपने नाम और पते के साथ मंदिर कार्यालय के आधिकारिक व्हाट्सएप नंबर पर अवश्य भेजें।
                   </p>
                </div>
