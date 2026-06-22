@@ -133,7 +133,7 @@ const Footer = () => {
 
         {/* --- BOTTOM BAR --- */}
         <div className="pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-4 text-[11px] font-bold text-gray-400">
-          <p>© {currentYear} वरद वल्लभ महागणपति मंदिर। सर्वाधिकार सुरक्षित।</p>
+          <p>© {currentYear} वरद वल्लभा महागणपति मंदिर। सर्वाधिकार सुरक्षित।</p>
           <div className="flex gap-6">
             <a href="#" className="hover:text-red-700 transition-colors">गोपनीयता नीति</a>
             <a href="#" className="hover:text-red-700 transition-colors">नियम एवं शर्तें</a>
